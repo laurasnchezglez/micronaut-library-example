@@ -17,6 +17,8 @@ To run the application with gradle:
 2. Inside the project folder, execute ./gradlew run
 
 This is a very simple project: just two domain classes: books and genres. The repositories of these domains extend from the CrudRepository (Micronaut-data, very similar to spring boot data). This repository is very useful for simple domains. It can be improved with other queries (@query for include hsql code). 
+For security, it has an authprovider, which authenticates just with login/password. Authentication must be activated in application.yml. 
+For inserting initial data, and ApplicationEventListener were included with some inserts.
 
 The controllers offers (authenticated with user/pwd admin/admin):
 
