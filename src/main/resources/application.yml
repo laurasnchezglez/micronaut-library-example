@@ -1,0 +1,28 @@
+micronaut:
+  application:
+    name: library-example
+  security:
+    enabled: true #s'aplicará el authProvider que tingui implementat l'aplicació
+    endpoints:
+      login:
+        enabled: true
+
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`}
+    username: ${JDBC_USER:sa}
+    password: ${JDBC_PASSWORD:""}
+    driverClassName: ${JDBC_DRIVER:org.h2.Driver}
+jpa:
+  default:
+    packages-to-scan:
+      - 'example' # <1>
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+        dialect: H2
+        bytecode:
+          provider: none
+
