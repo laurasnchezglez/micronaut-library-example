@@ -12,7 +12,7 @@
     <logger name="example.controller" level="debug"/>
     <logger name="example.domain" level="info"/>
 
-    <root level="warn">
+    <root level="error">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

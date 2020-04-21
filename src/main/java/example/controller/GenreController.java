@@ -10,7 +10,8 @@ import io.micronaut.http.annotation.Produces;
 import io.micronaut.security.annotation.Secured;
 
 import javax.inject.Inject;
-import java.util.List;
+import javax.transaction.Transactional;
+
 
 @Secured("isAuthenticated()")
 @Controller("/genres") // <1>
@@ -25,6 +26,7 @@ public class GenreController {
 
     @Get
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Iterable<Genre> index() {
         Iterable<Genre> all = genreRepository.findAll();
 
@@ -32,6 +34,7 @@ public class GenreController {
     }
 
     @Get("/{id}")
+    @Transactional
     @Produces(MediaType.APPLICATION_JSON)
     public Genre get(@NotNull Long id) {
         return genreRepository.findById(id).get();

@@ -10,6 +10,7 @@ import io.micronaut.http.annotation.*;
 import io.micronaut.security.annotation.Secured;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /*
@@ -28,6 +29,7 @@ public class BookController {
 
     @Get
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Iterable<Book> index() {
 
         return bookRepository.findAll();
@@ -35,12 +37,14 @@ public class BookController {
 
     @Get("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Book get(@NotNull Long id) {
         return bookRepository.findById(id).get();
     }
 
     @Get("/genre/{name}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Book get(@NotNull String name) {
         return bookRepository.findByGenreName(name).get();
     }
@@ -50,6 +54,7 @@ public class BookController {
     * */
     @Put
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Book put(@NotNull @Body Book book) {
         return bookRepository.save(book);
     }
