@@ -12,7 +12,7 @@ This project uses the following technologies:
 8. Gradle
 
 
-To run the application with gradle:
+To **run the application** with gradle:
 1. Clone the project
 2. Inside the project folder, execute ./gradlew run
 
